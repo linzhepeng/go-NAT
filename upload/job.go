@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"exercise/logger/fileLogger"
 	"fmt"
 	"github.com/jayi/golog"
 	"io/ioutil"
@@ -43,7 +42,6 @@ type JobInfo struct {
 	lock       sync.Mutex
 }
 
-var logger = fileLogger.NewLogger("info", "./", "log.log", "errLog.log", 10*1024*1024)
 
 //JobInfo的初始化函数
 func NewJob(filename string, partLength int64, concurrent int64) (*JobInfo, error) {
@@ -127,7 +125,7 @@ func (j *JobInfo) initUpload(ip, port string) error {
 			return err
 		}
 	}
-	logger.InfoF("init upload %s ok,", j.FileName)
+	golog.Infof("init upload %s ok,", j.FileName)
 	return nil
 }
 
@@ -189,7 +187,7 @@ func (j *JobInfo) uploadPart(i int, url string) error {
 		return err
 	}
 
-	logger.InfoF("send part %d of %s ok", i+1, j.FileName)
+	golog.Infof("send part %d of %s ok", i+1, j.FileName)
 	ri.Status = RANGE_STATUS_DONE
 	return nil
 }
