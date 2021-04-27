@@ -1,7 +1,7 @@
 # 功能
 - 可以实现通过任意电脑向家庭电脑上传文件
 # 原理
-![](https://github.com/linzhepeng/go-NAt/blob/main/x.png)
+![](https://github.com/linzhepeng/go-NAt/blob/main/images/x.png)
 # 特色  
 - server与client通过心跳包保持连接。client断线自动重连
 - 多协程并发上传下载
